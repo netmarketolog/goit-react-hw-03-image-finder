@@ -1,9 +1,13 @@
-import { PhoneBook } from './PhoneBook/PhoneBook';
-
 export const App = () => {
   return (
     <>
-      <PhoneBook />
+      <Searchbar />
+      <ImageGallery>
+        <ImageGalleryItem />
+        <Modal />
+      </ImageGallery>
+      <Button />
+      <Loader />
     </>
   );
 };
