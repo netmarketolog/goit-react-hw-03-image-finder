@@ -1,6 +1,13 @@
 import { Component } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { Notify } from 'notiflix';
+import {
+  SearchBar,
+  SearchForm,
+  SearchFormBtn,
+  SearchFormBtnLabel,
+  SearchFormInput,
+} from './Searchbar.styled';
 
 export class Searchbar extends Component {
   state = {
@@ -26,13 +33,13 @@ export class Searchbar extends Component {
   render() {
     return (
       <>
-        <header>
-          <form onSubmit={this.handleSubmit}>
-            <button type="submit">
-              <span>Search</span>
-            </button>
-            <BsSearch size={15} />
-            <input
+        <SearchBar>
+          <SearchForm onSubmit={this.handleSubmit}>
+            <SearchFormBtn type="submit">
+              <BsSearch size={15} />
+              <SearchFormBtnLabel>Search</SearchFormBtnLabel>
+            </SearchFormBtn>
+            <SearchFormInput
               value={this.state.inputValue}
               onChange={this.handleChange}
               type="text"
@@ -40,8 +47,8 @@ export class Searchbar extends Component {
               autoFocus
               placeholder="Search images and photos"
             />
-          </form>
-        </header>
+          </SearchForm>
+        </SearchBar>
       </>
     );
   }

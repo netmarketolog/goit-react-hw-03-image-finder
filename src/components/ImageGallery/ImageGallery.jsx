@@ -1,9 +1,10 @@
-import { ImageGalleryItem } from "./ImageGalleryItem/ImageGalleryItem";
-
+import { Gallery } from './ImageGallery.styled';
+import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
+import PropTypes from 'prop-types';
 
 export default function ImageGallery({ data }) {
   return (
-    <div>
+    <Gallery>
       {data.map(item => (
         <ImageGalleryItem
           key={item.id}
@@ -12,6 +13,16 @@ export default function ImageGallery({ data }) {
           alt={item.tags}
         />
       ))}
-    </div>
+    </Gallery>
   );
 }
+ImageGallery.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+    })
+  ),
+};

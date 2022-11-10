@@ -4,6 +4,7 @@ import fetchValue from '../Api/Api';
 import ImageGallery from './ImageGallery/ImageGallery';
 import { Loader } from './Loader/Loader';
 import Button from './Button/Button';
+import { Container } from './App.styled';
 export class App extends Component {
   state = {
     inputValue: '',
@@ -42,14 +43,14 @@ export class App extends Component {
   render() {
     const { images, status } = this.state;
     return (
-      <div>
+      <Container>
         <Searchbar onSubmit={this.handleFormSubmit} />
         {images && <ImageGallery data={images} />}
         {status === 'loading' && <Loader />}
-        {images.length > 12 && status === 'resolved' && (
+        {images.length >= 12 && status === 'resolved' && (
           <Button onClick={this.loadMore} />
         )}
-      </div>
+      </Container>
     );
   }
 }
